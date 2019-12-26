@@ -1,0 +1,12 @@
+﻿  Gra.cpp
+c:\users\kazim\desktop\studia\pk4\projekt\projekt_sem_4\project_game\dodatki.h(58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\kazim\desktop\studia\pk4\projekt\projekt_sem_4\project_game\gra.cpp(5): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+c:\users\kazim\desktop\studia\pk4\projekt\projekt_sem_4\project_game\funkcjie.h(43): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  c:\users\kazim\desktop\studia\pk4\projekt\projekt_sem_4\project_game\gra.cpp(11): note: see reference to function template instantiation 'void wypisz<char>(Type3 [][24],std::vector<Ksztalt *,std::allocator<_Ty>> &,Ludek *&,std::vector<Postac *,std::allocator<Postac*>> &)' being compiled
+          with
+          [
+              Type3=char,
+              _Ty=Ksztalt *
+          ]
+c:\users\kazim\desktop\studia\pk4\projekt\projekt_sem_4\project_game\funkcjie.h(49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Project_Game.vcxproj -> C:\Users\kazim\Desktop\Studia\PK4\Projekt\Projekt_Sem_4\Debug\Project_Game.exe

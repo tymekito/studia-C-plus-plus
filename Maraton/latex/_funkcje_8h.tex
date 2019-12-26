@@ -1,0 +1,206 @@
+\hypertarget{_funkcje_8h}{}\section{Funkcje.\+h File Reference}
+\label{_funkcje_8h}\index{Funkcje.h@{Funkcje.h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structlista__zawodnik}{lista\+\_\+zawodnik}}
+\begin{DoxyCompactList}\small\item\em Structura zawodnika. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}}
+\begin{DoxyCompactList}\small\item\em Structura maraton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{_funkcje_8h_a08a7e80614413cf585fc024d61fccb0e}{wczytaj}} (string \&, \mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&)
+\begin{DoxyCompactList}\small\item\em Opis funkcjia wczytaj. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_funkcje_8h_abfb177cce0d522a98366be67a9ba7317}{wczytaj\+\_\+arg}} (int, char $\ast$\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&)
+\begin{DoxyCompactList}\small\item\em Opis funkcjia wczytaj\+\_\+arg. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_ae2e66d65298e7ea5edcf01264fb77e14}{zapisz}} (\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Opis funkcji zapisz. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_a2245605c3301f72e973951bb557165d7}{zapisz\+\_\+zawodnika}} (\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Opis funkcji zapisz\+\_\+zawodnika. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_aa4a03cdf486fcb61afa11ad6d4659249}{scal\+\_\+maratony}} (vector$<$ string $>$, int, \mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&)
+\begin{DoxyCompactList}\small\item\em Opis funkcji scal\+\_\+maratony. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_a1bc77df54070167c151ffaca0c0a0ece}{dodaj\+\_\+wynik}} (\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Opis funkcji dodaj\+\_\+wynik. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_funkcje_8h_aa61a042fe23d6a708f5488a0a49f7d51}{znajdz}} (vector$<$ string $>$, \mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Opis funkcji znajdz. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_ad29818e331e4677f955132f907fe1018}{usun\+\_\+iteracyjnie}} (\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&)
+\begin{DoxyCompactList}\small\item\em Opis funkcji usun\+\_\+iteracyjnie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_funkcje_8h_a9b40fd0723357b4c9ef65ea7870e71fd}{maraton}} (int, char $\ast$\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Opis funkcji maraton. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyVersion}{Version}
+Maraton 1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+18/01/2018 
+\end{DoxyDate}
+\begin{DoxyAuthor}{Author}
+Tymoteusz S³obodzian 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{_funkcje_8h_a1bc77df54070167c151ffaca0c0a0ece}\label{_funkcje_8h_a1bc77df54070167c151ffaca0c0a0ece}} 
+\index{Funkcje.h@{Funkcje.h}!dodaj\_wynik@{dodaj\_wynik}}
+\index{dodaj\_wynik@{dodaj\_wynik}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{dodaj\_wynik()}{dodaj\_wynik()}}
+{\footnotesize\ttfamily void dodaj\+\_\+wynik (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji dodaj\+\_\+wynik. 
+
+Funkcja tworzy plik torzsamy z nazwiskiem zawodnika i zapisuje do niego czas jaki uzyska³ w danym maratonie oraz nazwe maratonu 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+maraton$\ast$\&} & wskaznik na structure maraton(wskaznik na glowe listy) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_a9b40fd0723357b4c9ef65ea7870e71fd}\label{_funkcje_8h_a9b40fd0723357b4c9ef65ea7870e71fd}} 
+\index{Funkcje.h@{Funkcje.h}!maraton@{maraton}}
+\index{maraton@{maraton}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{maraton()}{maraton()}}
+{\footnotesize\ttfamily void maraton (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{char $\ast$}]{\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji maraton. 
+
+Jest to glowna funckja programu ktora ma za zadanie wywolac funkcje realizujace program 
+\begin{DoxyParams}{Parameters}
+{\em int} & liczba argumentow wprowadzonych do programu z lini polecen \\
+\hline
+{\em char$\ast$\mbox{[}$\,$\mbox{]}} & tablica wskaznikow na znaki przechowuje znaki / lancuchy znakow wczytane z argumentow z lini polecen \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_aa4a03cdf486fcb61afa11ad6d4659249}\label{_funkcje_8h_aa4a03cdf486fcb61afa11ad6d4659249}} 
+\index{Funkcje.h@{Funkcje.h}!scal\_maratony@{scal\_maratony}}
+\index{scal\_maratony@{scal\_maratony}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{scal\_maratony()}{scal\_maratony()}}
+{\footnotesize\ttfamily void scal\+\_\+maratony (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{,  }\item[{int}]{,  }\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji scal\+\_\+maratony. 
+
+Funckja wywoluje funkcjie wczytaj (,) dla danej nazwy maratonu i wskaznika na poczatek listy , funkcja wywoluje sie do momentu az wczytamy wszytkie pliki zawarte w wektorze 
+\begin{DoxyParams}{Parameters}
+{\em vector$<$string$>$} & wektor przechowujacy nazwy plikow z jakich maja byc wczytane maratony \\
+\hline
+{\em lista\+\_\+maraton$\ast$\&} & wskaznik na structure maraton(wskaznik na glowe listy) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_ad29818e331e4677f955132f907fe1018}\label{_funkcje_8h_ad29818e331e4677f955132f907fe1018}} 
+\index{Funkcje.h@{Funkcje.h}!usun\_iteracyjnie@{usun\_iteracyjnie}}
+\index{usun\_iteracyjnie@{usun\_iteracyjnie}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{usun\_iteracyjnie()}{usun\_iteracyjnie()}}
+{\footnotesize\ttfamily void usun\+\_\+iteracyjnie (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji usun\+\_\+iteracyjnie. 
+
+Funckja czysci pamiec , usuwa liste maratonow oraz podwieszone do niej listy zawodnikow 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+maraton$\ast$\&} & wskaznik na structure maraton(wskaznik na glowe listy) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_a08a7e80614413cf585fc024d61fccb0e}\label{_funkcje_8h_a08a7e80614413cf585fc024d61fccb0e}} 
+\index{Funkcje.h@{Funkcje.h}!wczytaj@{wczytaj}}
+\index{wczytaj@{wczytaj}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{wczytaj()}{wczytaj()}}
+{\footnotesize\ttfamily bool wczytaj (\begin{DoxyParamCaption}\item[{string \&}]{,  }\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcjia wczytaj. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em string\&} & Nazwa pliku z jakiego ma zostac wczytany maraton \\
+\hline
+{\em lista\+\_\+maraton$\ast$\&} & wskaznik na structure listy w ktorej ma zostac zapisany lista jest modyfikowana po wykonaiu funkcji \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Funkcja zwraca wartosc true w momencie wczytania pliku , wartosc false gdy plik o podanej nazwie nie istnieje 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_funkcje_8h_abfb177cce0d522a98366be67a9ba7317}\label{_funkcje_8h_abfb177cce0d522a98366be67a9ba7317}} 
+\index{Funkcje.h@{Funkcje.h}!wczytaj\_arg@{wczytaj\_arg}}
+\index{wczytaj\_arg@{wczytaj\_arg}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{wczytaj\_arg()}{wczytaj\_arg()}}
+{\footnotesize\ttfamily bool wczytaj\+\_\+arg (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{char $\ast$}]{\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$\&}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcjia wczytaj\+\_\+arg. 
+
+Funckja tworzy nowy element listy i dodaje go do podanej w argumencie listy elementy sa dodawane w sposob uporzadowany wzgledem daty 
+\begin{DoxyParams}{Parameters}
+{\em int} & ilosc wczytanych argumentow z lini polecen \\
+\hline
+{\em char$\ast$\mbox{[}$\,$\mbox{]}} & tablica wskaznikow na znaki przechowuje znaki / lancuchy znakow wczytane z argumentow z lini polecen \\
+\hline
+{\em lista\+\_\+maraton$\ast$\&} & wskaznik na structure listy w ktorej ma zostac zapisany lista jest modyfikowana po wykonaiu funkcji \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Funkcja zwraca wartosc true w momencie parametrow lub flase gdy wczytwanie nie powiodlo sie np. nie podano argumentow 
+\end{DoxyReturn}
+\mbox{\Hypertarget{_funkcje_8h_ae2e66d65298e7ea5edcf01264fb77e14}\label{_funkcje_8h_ae2e66d65298e7ea5edcf01264fb77e14}} 
+\index{Funkcje.h@{Funkcje.h}!zapisz@{zapisz}}
+\index{zapisz@{zapisz}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{zapisz()}{zapisz()}}
+{\footnotesize\ttfamily void zapisz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji zapisz. 
+
+Funkcja skladajaca sie z pofunkcji ktore tworza plik torzsamy z nazwiskiem zawodnika lub dopisuja wynik(czas + nazwe maratonu) do istniejacego pliku 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+maraton$\ast$} & wskaznik na struture maraton \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_a2245605c3301f72e973951bb557165d7}\label{_funkcje_8h_a2245605c3301f72e973951bb557165d7}} 
+\index{Funkcje.h@{Funkcje.h}!zapisz\_zawodnika@{zapisz\_zawodnika}}
+\index{zapisz\_zawodnika@{zapisz\_zawodnika}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{zapisz\_zawodnika()}{zapisz\_zawodnika()}}
+{\footnotesize\ttfamily void zapisz\+\_\+zawodnika (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji zapisz\+\_\+zawodnika. 
+
+Funkcja tworzy plik torzsamy z nazwiskiem zawodnika i zapisuje do niego czas jaki uzyska³ w danym maratonie oraz nazwe maratonu 
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+maraton$\ast$} & wskaznik na structure maraton \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{_funkcje_8h_aa61a042fe23d6a708f5488a0a49f7d51}\label{_funkcje_8h_aa61a042fe23d6a708f5488a0a49f7d51}} 
+\index{Funkcje.h@{Funkcje.h}!znajdz@{znajdz}}
+\index{znajdz@{znajdz}!Funkcje.h@{Funkcje.h}}
+\subsubsection{\texorpdfstring{znajdz()}{znajdz()}}
+{\footnotesize\ttfamily bool znajdz (\begin{DoxyParamCaption}\item[{vector$<$ string $>$}]{,  }\item[{\mbox{\hyperlink{structlista__maraton}{lista\+\_\+maraton}} $\ast$}]{ }\end{DoxyParamCaption})}
+
+
+
+Opis funkcji znajdz. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lista\+\_\+maraton$\ast$} & wskaznik na structure maraton(wskaznik na glowe listy) \\
+\hline
+{\em vector$<$string$>$} & nazwa zawodnika ktory ma zostac znaleziony w liscie Funkcja szuka zawodnika o podanym nazwisku istnieje w liscie \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Funkcja zwraca wartosc true jezeli dany wadonik istnieje w liscie w przeciwnym wypadku zwraca wartosc false 
+\end{DoxyReturn}
