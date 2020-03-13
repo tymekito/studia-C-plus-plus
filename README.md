@@ -1,1 +1,1 @@
-# Projekty na studia
+# Projekty wykonane w języku C++
