@@ -1,1 +1,1 @@
-# Projekty na studia
+# My C++ projects 
