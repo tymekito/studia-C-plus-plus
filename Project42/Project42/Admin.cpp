@@ -23,7 +23,7 @@ void Admin::dodajUzytkownika()
 	}
 	catch (exception e)
 	{
-		cout << "blad podczas dostepu do bazy uzytkownikow";
+		cout << "Blad podczas dostepu do bazy uzytkownikow"<<endl;
 		plik.close();
 	}
 
@@ -31,9 +31,9 @@ void Admin::dodajUzytkownika()
 
 void Admin::usunUzytkownika()
 {
-	cout << "Podaj login uzytkownika ktory ma zostac usuniety";
+	cout << "Podaj login uzytkownika ktory ma zostac usuniety"<<endl;
 	string login;
-	cout << "Login: ";
+	cout << "Login: "<<endl;
 	cin >> login;
 
 	fstream plik("hasla.txt", std::ios::in);
@@ -42,7 +42,7 @@ void Admin::usunUzytkownika()
 		string linia;
 		string loginzpliku;
 		// u¿ycie vectora jako kontenera stl
-		vector<string> liniezpliku;
+		std::vector<string> liniezpliku;
 		while (getline(plik, linia)) {
 			char * schowek;
 			char* skonwertowany = new char[linia.length() + 1];
@@ -62,8 +62,10 @@ void Admin::usunUzytkownika()
 		plik.open("hasla.txt", std::ofstream::out | std::ofstream::trunc);
 		if (plik.good()) {
 			// iterator stl 
-			for (int i = 0; i < liniezpliku.size(); i++) {
-				plik << liniezpliku.at(i);
+			std::vector<string>::iterator cell = liniezpliku.begin();
+			for (cell; cell!=liniezpliku.end(); cell++) {
+
+				plik << *cell;
 			}
 		}
 		plik.close();
@@ -71,7 +73,7 @@ void Admin::usunUzytkownika()
 	}
 	catch(exception e)
 	{
-		cout << "blad podczas dostepu do bazy uzytkownikow";
+		cout << "Blad podczas dostepu do bazy uzytkownikow"<<endl;
 		plik.close();
 	}
 
@@ -106,7 +108,7 @@ void Admin::menu()
 		exit(0);
 
 	default:
-		cout << "Bledna opcja";
+		cout << "Bledna opcja" << endl;
 		menu();
 	}
 }

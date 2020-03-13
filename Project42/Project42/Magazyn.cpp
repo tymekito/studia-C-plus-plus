@@ -5,16 +5,14 @@ using namespace std;
 Lek* Magazyn::znajdzlek(string nazwaleku, string nazwarodzaju) //parametr metody z klasy lek
 {
 	fstream plik;
-	// failbit	Logiczny wyj¹tek na i/o operacji  
-	// badbit	Odzczyt / zapis  na i/o operacji wyj¹tek 
-	// zdefiniowanie mo¿liwych wyj¹tków
-	plik.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-	//if (plik.good() == true)
-	//{
 	// sprawdzenie fragmentu instrukcj¹ try
 	try
 	{
 		plik.open(nazwarodzaju + ".txt", std::ios::in);
+		if (!plik.good())
+		{
+			throw std::exception("Nie istnieje taki rodzaj leku");
+		}
 		while (!plik.eof())
 		{
 			string napis;
@@ -30,8 +28,6 @@ Lek* Magazyn::znajdzlek(string nazwaleku, string nazwarodzaju) //parametr metody
 			ss >> nazwazpliku >> refundacja >> cena >> ograniczenia >> iloscsztuk >> numerserii;
 			if (nazwazpliku == nazwaleku)
 			{
-
-
 				return new Lek(nazwaleku, cena, refundacja, ograniczenia, numerserii, iloscsztuk);
 				plik.close();
 			}
@@ -40,9 +36,9 @@ Lek* Magazyn::znajdzlek(string nazwaleku, string nazwarodzaju) //parametr metody
 		return nullptr;
 	}
 	// z³apanie wyj¹tku w przypadku niepowodzenia dostêpu do pliku
-	catch (std::ifstream::failure &e )
+	catch (const std::exception &e )
 	{
-		std::cout << "Dostep do pliku zostal zabroniony!" << "kod bledu" << &e << std::endl;
+		std::cout <<std::endl << e.what() << std::endl;
 		plik.close();
 		return nullptr;
 	}
@@ -68,18 +64,28 @@ void Magazyn::dodajlek()
 	}
 	else
 	{
-
 		bool refundacja;
 		double cena;
 		int ograniczenia;
 		int iloscsztuk;
 		string numerserii;
 		// sprawdznie fragmentu kodu podejrzanego o wyj¹tek 
-		ofstream plik(nazwarodzaju + ".txt", ios::out | ios::app);
-		try {
-
+		ofstream plik;
+		// je¿eli otwarcie pliku by siê nie powiod³o rzucany jest wyj¹tek który ³apie instrukcja catch
+		// je¿eli do jakiegoœ obiektu nie mo¿na by³o by siê odwo³aæ to rzucany jest wyj¹tek exception
+		try 
+		{
+			plik.open(nazwarodzaju + ".txt", ios::out | ios::app);
+			plik << nazwarodzaju << " " << numerserii;
 			plik.close(); //obowi¹zkowo nale¿y zamkn¹æ plik
-			ofstream zamienniki("zamienniki.txt", ios::out | ios::app);
+		}
+		catch (const exception &e)
+		{
+			cout << "cos poszlo nie tak przy otwieraniu pliku!" << endl;
+		}
+		ofstream zamienniki;
+		try {
+			zamienniki.open("zamienniki.txt", ios::out | ios::app);
 			string choroba;
 			zamienniki << nazwaleku + " ";
 			cout << "Wpisz choroby dla ktorych twoj lek jest zamiennikiem jezeli chcesz przestac wpisz 0";
@@ -91,50 +97,16 @@ void Magazyn::dodajlek()
 				zamienniki << choroba + " ";
 			}
 
-
+			zamienniki.close();
 		}
 		// z³panie wyj¹tku
-		catch(std::exception &e)
+		catch (const exception &e)
 		{
-			cout << "cos poszlo nie tak przy otwieraniu pliku!"<<"kod bledu" << &e << endl;
-			plik.close();
+			cout << "cos poszlo nie tak przy otwieraniu pliku!"<<" zamienniki.txt" << endl;
+			zamienniki.close();
 		}
 	}
 }
-
-void Magazyn::znajdzzamiennik(string choroba)
-{
-	fstream plik;
-	try {
-		plik.open("zamienniki.txt", std::ios::in);
-
-		while (!plik.eof())
-		{
-			string napis;
-			string nazwazpliku;
-			int iloscsztuk;
-			getline(plik, napis, '\n');
-			char * schowek;
-			char* skonwertowany = new char[napis.length() + 1];
-			strcpy(skonwertowany, napis.c_str());
-			schowek = strtok(skonwertowany, " ");
-			nazwazpliku = schowek;
-			while (schowek != NULL) {
-				if (schowek == choroba) {
-					cout << "lekiem dzialajacym na te chorobe jest: " + nazwazpliku << endl;
-				}
-				schowek = strtok(NULL, " ");
-			}
-		}
-		plik.close();
-	}
-	catch(std::exception e)
-	{
-		std::cout << "Dostep do pliku zostal zabroniony!" << std::endl;
-		plik.close();
-	}
-}
-
 
 void Magazyn::usunlek(string nazwaleku, string nazwarodzaju)
 {
@@ -188,7 +160,7 @@ void Magazyn::usunlek(string nazwaleku, string nazwarodzaju)
 		wypiszlistedopliku(nazwarodzaju, lista);
 		usunlekzzamiennikow(nazwaleku);
 	}
-	catch (std::exception e)
+	catch (std::exception &e)
 	{
 		std::cout << "Dostep do pliku zostal zabroniony!" << std::endl;
 		plik.close();
@@ -199,6 +171,7 @@ void Magazyn::usunlek(string nazwaleku, string nazwarodzaju)
 void Magazyn::usunlekzzamiennikow(string nazwaleku)
 {
 	fstream plik;
+	// sprawdzenie kodu podejrzanego o wyj¹tek
 	try
 	{
 	plik.open("zamienniki.txt", std::ios::in);
@@ -224,14 +197,17 @@ void Magazyn::usunlekzzamiennikow(string nazwaleku)
 		}
 		plik.close();
 		plik.open("zamienniki.txt", std::ofstream::out | std::ofstream::trunc);
-		if (plik.good()) {
-			for (int i = 0; i < liniezpliku.size(); i++) {
-				plik << liniezpliku.at(i);
+		if (plik.good()) 
+		{
+			std::vector<string>::iterator cell = liniezpliku.begin();
+			for (cell; cell!= liniezpliku.end(); cell++) {
+				plik << *cell;
 			}
 		}
 		plik.close();
 	}
-	catch (std::exception e)
+	// z³apanie wyj¹tku 
+	catch (std::exception &e)
 	{
 		std::cout << "Dostep do pliku zostal zabroniony!" << std::endl;
 		plik.close();
@@ -300,7 +276,7 @@ void Magazyn::zmniejszilosclekowojeden(string nazwaleku, string nazwarodzaju)
 		plik.close();
 		wypiszlistedopliku(nazwarodzaju, lista);
 	}
-	catch (std::exception e)
+	catch (std::exception &e)
 	{
 		cout << "Dostep do bazy zabroniony" << endl;
 		plik.close();
@@ -311,10 +287,10 @@ void Magazyn::zmniejszilosclekowojeden(string nazwaleku, string nazwarodzaju)
 void Magazyn::uzupelnijlek(string nazwaleku, string nazwarodzaju, int nowailosc)
 {
 	fstream plik;
-
-	plik.open(nazwarodzaju + ".txt", std::ios::in);
-	if (plik.good() == true)
+	try
 	{
+	plik.open(nazwarodzaju + ".txt", std::ios::in);
+
 		string linia;
 		string nazwalekuzpliku;
 		bool refundacja;
@@ -354,6 +330,11 @@ void Magazyn::uzupelnijlek(string nazwaleku, string nazwarodzaju, int nowailosc)
 		plik.close();
 		wypiszlistedopliku(nazwarodzaju, lista);
 	}
+	catch (exception & e)
+	{
+		plik.close();
+		cout << "cos poszlo nie tak przy otwieraniu pliku!" << endl;
+	}
 
 }
 
@@ -377,9 +358,10 @@ void Magazyn::wypiszlistedopliku(string nazwarodzaju, Listalekow* lista) //metod
 		plik.close();
 	}
 	// z³apanie wyj¹tku
-	catch (std::exception e)
+	catch (const exception &e)
 	{
 		cout << "Dostep do bazy zabroniony" << endl;
 		plik.close();
 	}
 }
+

@@ -1,15 +1,68 @@
 #include "Logowanie.h"
 
+bool sprawdzDane(string login, string haslo)
+{
+	std::regex wyrazenieDuzaLitera{ "[A-Z]+" }; //znajdz du¿¹ litere
+	std::regex wyrazenieMalaLitera{ "[a-z]+" }; //znadz ma³a liere
+	std::regex wyrazenieCyfra{ "[0-9]+" }; //znajdz cyfre
+	std::regex wyrazenieZnakSpecjalny{ "[@!?.]+" };// znadz znak
+	bool duzaLitera = false; 
+	bool malaLitera = false; 
+	bool cyfra = false; 
+	bool znakSpecjalny = false;
+	duzaLitera = std::regex_search(login, wyrazenieDuzaLitera);
+	malaLitera = std::regex_search(login, wyrazenieMalaLitera);
+	cyfra = std::regex_search(login, wyrazenieCyfra);
+	//sprawdz login
+	if (uppercase&&malaLitera&&cyfra)
+	{
+		duzaLitera = std::regex_search(haslo, wyrazenieDuzaLitera);
+		malaLitera = std::regex_search(haslo, wyrazenieMalaLitera);
+		cyfra = std::regex_search(haslo, wyrazenieCyfra);
+		znakSpecjalny = std::regex_search(haslo, wyrazenieZnakSpecjalny);
+		if (duzaLitera&&malaLitera&&cyfra&&znakSpecjalny)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		return false;
+	}
+	
+}
 string Logowanie::menulogowania()
 {
+	// regular expression szukanie wzorca w tekœcie w innym teksæie jeœli pasuje true jeœli nie false
 	string login;
 	string haslo;
-	cout << "Zaloguj sie" << endl;
+
+
+	cout << "Zaloguj sie \n"
+		<<"Login musi zawierac minimum 1 duza litere i cyfre \n" 
+		<<"Haslo musi zawierac min. 1 duza litere, cyfre oraz znak specjalny @!?."
+		<< endl;
+
 	cout << "Login: ";
 	cin >> login;
 	cout << "Haslo: ";
 	cin >> haslo;
-	return zalogujSie(login, haslo);
+
+	if (sprawdzDane(login,haslo))
+	{
+		return zalogujSie(login, haslo);
+	}
+	else 
+	{
+		cout << "Zly login lub haslo" << endl;
+		return " ";
+	}
+	
+
 }
 
 string Logowanie::zalogujSie(string login, string haslo)
