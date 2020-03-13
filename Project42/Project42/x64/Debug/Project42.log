@@ -1,0 +1,3 @@
+﻿  Magazyn.cpp
+d:\github\studia-c-plus-plus\project42\project42\magazyn.cpp(121): warning C4101: 'iloscsztuk': unreferenced local variable
+  Project42.vcxproj -> D:\GitHub\studia-C-plus-plus\Project42\x64\Debug\Project42.exe
