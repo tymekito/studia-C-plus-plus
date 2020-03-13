@@ -41,7 +41,6 @@ string Logowanie::menulogowania()
 	string login;
 	string haslo;
 
-
 	cout << "Zaloguj sie \n"
 		<<"Login musi zawierac minimum 1 duza litere i cyfre \n" 
 		<<"Haslo musi zawierac min. 1 duza litere, cyfre oraz znak specjalny @!?."

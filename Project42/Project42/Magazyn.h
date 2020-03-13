@@ -8,39 +8,66 @@ public:
 	Magazyn() {};
 	Lek* znajdzlek(string nazwaleku, string nazwarodzaju);
 	void dodajlek();
-	template <typename T> void znajdzzamiennik(T choroba)
+	void znajdzzamiennik(string choroba);
+	template <typename T> void usunlek(string nazwaleku, string nazwarodzaju)
 	{
 		fstream plik;
-		try {
-			plik.open("zamienniki.txt", std::ios::in);
 
-			while (!plik.eof())
-			{
-				string napis;
-				string nazwazpliku;
-				int iloscsztuk;
-				getline(plik, napis, '\n');
+		try
+		{
+			plik.open(nazwarodzaju + ".txt", std::ios::in);
+			string linia;
+			string nazwalekuzpliku;
+			bool refundacja;
+			double cena;
+			int ograniczenia;
+			int iloscsztuk;
+			string numerserii;
+			Listalekow* lista = NULL;
+
+			while (getline(plik, linia)) {
 				char * schowek;
-				char* skonwertowany = new char[napis.length() + 1];
-				strcpy(skonwertowany, napis.c_str());
+				char* skonwertowany = new char[linia.length() + 1];
+				strcpy(skonwertowany, linia.c_str());
 				schowek = strtok(skonwertowany, " ");
-				nazwazpliku = schowek;
-				while (schowek != NULL) {
-					if (schowek == choroba) {
-						cout << "lekiem dzialajacym na te chorobe jest: " + nazwazpliku << endl;
-					}
+
+				//while (schowek != NULL) {
+				cout << schowek << endl;
+				nazwalekuzpliku = schowek;
+				if (nazwaleku != nazwalekuzpliku) {
 					schowek = strtok(NULL, " ");
+					refundacja = schowek;
+
+					schowek = strtok(NULL, " ");
+					cena = stoi(schowek);
+
+					schowek = strtok(NULL, " ");
+					ograniczenia = stoi(schowek);
+
+					schowek = strtok(NULL, " ");
+					iloscsztuk = stoi(schowek);
+
+					schowek = strtok(NULL, " ");
+					numerserii = schowek;
+
+					Lek* lek = new Lek(nazwalekuzpliku, refundacja, cena, ograniczenia, numerserii, iloscsztuk);
+					lista->dodajlekdolisty(lek, lista);
+
 				}
+
+				delete skonwertowany;
 			}
 			plik.close();
+			wypiszlistedopliku(nazwarodzaju, lista);
+			usunlekzzamiennikow(nazwaleku);
 		}
 		catch (std::exception &e)
 		{
 			std::cout << "Dostep do pliku zostal zabroniony!" << std::endl;
 			plik.close();
 		}
+
 	}
-	void usunlek(string nazwaleku, string nazwarodzaju);
 	void usunlekzzamiennikow(string nazwaleku);
 	void zmniejszilosclekowojeden(string nazwaleku, string nazwarodzaju);
 	void uzupelnijlek(string nazwaleku, string nazwarodzaju, int nowailosc);

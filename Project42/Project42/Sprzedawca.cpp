@@ -74,7 +74,7 @@ void Sprzedawca::znajdzZamiennik()
 	string choroba;
 	cout << "Podaj chorobe dla ktorej szukasz lekow " << endl;
 	cin >> choroba;
-	magazyn.znajdzzamiennik<string>(choroba);
+	magazyn.znajdzzamiennik(choroba);
 	if (rola == "sprzedawca")
 		menu();
 }
